@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, AsyncStorage } from 'react-native';
 import Card from './Card';
 import { connect } from 'react-redux';
-import { receiveDecks } from '../actions';
+import { takeDecks } from '../actions';
 
 class DeckList extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class DeckList extends Component {
   async _updateDeckList() {
     const res = await AsyncStorage.getItem('allDecks');
     const allDecks = await JSON.parse(res) || {};
-    this.props.dispatch(receiveDecks(allDecks));
+    this.props.dispatch(takeDecks(allDecks));
   }
   render() {
     const { allDecks } = this.props;
@@ -37,4 +37,4 @@ function mapStateToProps(allDecks) {
   return { allDecks };
 }
 
-export default connect(mapStateToProps)(DeckList);s
+export default connect(mapStateToProps)(DeckList);

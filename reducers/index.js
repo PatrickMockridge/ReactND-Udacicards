@@ -1,11 +1,11 @@
-import { RECEIVE_DECKS, ADD_DECK, ADD_QUESTION } from '../actions';
+import { TAKE_DECKS, ADD_NEW_DECK, ADD_NEW_QUESTION } from '../actions';
 
-export default function decks(state = {}, action) {
+const reducer = (state = {}, action) => {
   switch (action.type) {
     case TAKE_DECKS:
       return {
         ...state,
-        ...action.data.decks,
+        ...action.data.allDecks,
       };
     case ADD_NEW_DECK:
       return {
@@ -24,3 +24,5 @@ export default function decks(state = {}, action) {
       return state;
   }
 }
+
+export default reducer

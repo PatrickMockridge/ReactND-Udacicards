@@ -1,7 +1,7 @@
 import { AsyncStorage } from 'react-native';
 import { Notifications, Permissions } from 'expo';
 
-const NOTIFICATION_KEY = 'UdaciCards:notifications';
+const NOTIFICATION_KEY = 'Udacicards123';
 
 export const clearLocalNotification = () => {
   return AsyncStorage.removeItem(NOTIFICATION_KEY)

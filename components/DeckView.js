@@ -4,7 +4,7 @@ import { color } from '../style/constants'
 
 export default class DeckView extends Component {
   static navigationOptions = {
-    headerTintColor: color.darkGrey,
+    headerTintColor: '#333333',
   };
   render() {
     const navigation = this.props.navigation;

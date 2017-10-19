@@ -61,14 +61,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    color: color.darkGrey,
+    color: '#333333',
     fontWeight: '400',
     textAlign: 'center',
   },
   input: {
     height: 30,
     width: 300,
-    borderColor: color.darkGrey,
+    borderColor: '#333333',
     borderWidth: 1,
     borderRadius: 3,
   },
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     paddingVertical: 10,
     paddingHorizontal: 50,
-    backgroundColor: color.darkGrey,
+    backgroundColor: '#333333',
   },
 });
 

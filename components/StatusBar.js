@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {StatusBar, View} from 'react-native'
 import {Constants} from 'expo'
 import {color} from '../style/constants'
 
-class AppStatusBar extends React.Component {
+class AppStatusBar extends Component {
   render () {
     return (
       <View

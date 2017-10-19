@@ -75,15 +75,15 @@ export default class QuizView extends Component {
             </Text>
           </Animated.View>
           <TouchableOpacity style={styles.secondaryButton} onPress={() => this.flipCard()}>
-            <Text style={{color: color.darkGrey}}>View Answer</Text>
+            <Text style={{color: '#333333'}}>View Answer</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.formContainer}>
           <TouchableOpacity style={styles.mainButton} onPress={() => this.goToNextQuestion(restQuestions, score + 1, totalNumber)}>
-            <Text style={{color: color.grey}}>Correct</Text>
+            <Text style={{color: '#333333'}}>Correct</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.mainBtn} onPress={() => this.goToNextQuestion(restQuestions, score, totalNumber)}>
-            <Text style={{color: color.grey}}>Incorrect</Text>
+            <Text style={{color: '#333333'}}>Incorrect</Text>
           </TouchableOpacity>
         </View>
       </View>
