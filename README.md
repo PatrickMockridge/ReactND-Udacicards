@@ -1,3 +1,15 @@
+# Udacicards
+
+A react native flash card quiz application built for and tested on iOS.
+
+Make sure that you have Yarn and Expo installed to run the application.
+
+https://yarnpkg.com/lang/en/
+https://expo.io
+
+After cloning the repo `cd` into the project directory type `yarn install` to install dependencies and the `yarn start` to build the app. Scan the QR code on your iOS device using Expo to test the app.
+
+
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
