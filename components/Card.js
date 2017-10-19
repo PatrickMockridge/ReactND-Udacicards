@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { color } from '../style/constants'
 
-class Card extends Component {
+export default class Card extends Component {
   render() {
     const { name, imageSource, questions, navigation } = this.props;
     return (

@@ -2,7 +2,7 @@ export const TAKE_DECKS = 'TAKE_DECKS';
 export const ADD_NEW_DECK = 'ADD_NEW_DECK';
 export const ADD_NEW_QUESTION = 'ADD_NEW_QUESTION';
 
-export const takeDecks = (decks) => {
+export const takeDecks = (allDecks) => {
   return {
     type: TAKE_DECKS,
     data: {
@@ -11,11 +11,11 @@ export const takeDecks = (decks) => {
   };
 }
 
-export const addNewDeck = (deck) => {
+export const addNewDeck = (deckName) => {
   return {
     type: ADD_NEW_DECK,
     data: {
-      deck,
+      deckName,
     },
   };
 }

@@ -32,16 +32,16 @@ class AddNewDeck extends Component {
         <View style={styles.header}>
           <Text style={styles.title}>Enter Deck Title</Text>
         </View>
-        <View style={styles.input}>
+        <View style={styles.form}>
           <TextInput
             style={styles.input}
             onChangeText={(deckName) => this.setState({deckName})}
             value={this.state.deckName}
           />
           <TouchableOpacity
-            style={[styles.okButton, { marginTop: 15 }]}
+            style={[styles.okButton, { marginTop: 20 }]}
             onPress={() => this._addNewDeck()}>
-            <Text style={{color: color.white}}>OK</Text>
+            <Text style={{color: color.darkBlue}}>OK</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   input: {
     height: 30,
     width: 300,
-    borderColor: '#333333',
+    borderColor: color.darkBlue,
     borderWidth: 1,
     borderRadius: 3,
   },
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     paddingVertical: 10,
     paddingHorizontal: 50,
-    backgroundColor: '#333333',
+    backgroundColor: color.orange,
   },
 });
 

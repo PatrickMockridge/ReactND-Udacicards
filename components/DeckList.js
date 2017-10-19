@@ -14,6 +14,9 @@ class DeckList extends Component {
   async _updateDeckList() {
     const res = await AsyncStorage.getItem('allDecks');
     const allDecks = await JSON.parse(res) || {};
+    //if (allDecks === undefined) {
+      //await AsyncStorage.setItem('allDecks', JSON.stringify({}));
+    //}
     this.props.dispatch(takeDecks(allDecks));
   }
   render() {
@@ -21,7 +24,7 @@ class DeckList extends Component {
     return (
       <ScrollView style={{flex: 1}}>
         {Object.entries(allDecks).map(([key, value]) =>
-          <DeckCard
+          <Card
             key={key}
             name={key}
             questions={value}
