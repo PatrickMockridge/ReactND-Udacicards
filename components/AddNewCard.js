@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     paddingVertical: 15,
     paddingHorizontal: 40,
-    backgroundColor: '#333333',
+    backgroundColor: color.darkGrey,
   },
   textInput: {
     height: 30,

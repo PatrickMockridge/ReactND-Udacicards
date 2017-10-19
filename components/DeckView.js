@@ -4,7 +4,7 @@ import { color } from '../style/constants'
 
 export default class DeckView extends Component {
   static navigationOptions = {
-    headerTintColor: '#333333',
+    headerTintColor: color.darkGrey,
   };
   render() {
     const navigation = this.props.navigation;
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     paddingVertical: 12,
     paddingHorizontal: 40,
-    backgroundColor: color.darkBlue,
+    backgroundColor: color.orange,
   },
   secondaryButton: {
     borderRadius: 4,

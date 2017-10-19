@@ -26,25 +26,25 @@ export default class QuizCompleteView extends Component {
           <SimpleLineIcons
             name="trophy"
             size={38}
-            color={'#333333'}
+            color={color.darkBlue}
           />
           <Text style={{fontSize: 28, fontWeight: '700', color: color.orange}}>
             Congratulations!
           </Text>
         </View>
         <View style={[styles.scoreContainer, styles.container]}>
-          <Text style={{fontSize: 14, color: '#333333'}}>
+          <Text style={{fontSize: 14, color: color.darkGrey}}>
             Final Score
           </Text>
           <View style={{backgroundColor: 'rgba(51, 51, 51, 0.9)', borderRadius: 3, marginTop: 6}}>
-            <Text style={{color: '#333333', paddingVertical: 6, paddingHorizontal: 40, fontWeight: '700', fontSize: 18}}>
+            <Text style={{color: color.darkGrey, paddingVertical: 6, paddingHorizontal: 40, fontWeight: '700', fontSize: 18}}>
               {score} / {totalNumber}
             </Text>
           </View>
         </View>
         <View style={[styles.buttonContainer, styles.container]}>
           <TouchableOpacity style={[styles.secondaryBtn, { marginTop: 10 }]} onPress={() => this.toHome()}>
-            <Text style={{color: '#333333'}}>Back to Home</Text>
+            <Text style={{color: color.darkGrey}}>Back to Home</Text>
           </TouchableOpacity>
         </View>
       </View>

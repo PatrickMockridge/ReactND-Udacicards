@@ -75,15 +75,15 @@ export default class QuizView extends Component {
             </Text>
           </Animated.View>
           <TouchableOpacity style={styles.secondaryButton} onPress={() => this.flipCard()}>
-            <Text style={{color: '#333333'}}>View Answer</Text>
+            <Text style={{color: color.darkBlue}}>View Answer</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.formContainer}>
           <TouchableOpacity style={styles.mainButton} onPress={() => this.goToNextQuestion(restQuestions, score + 1, totalNumber)}>
-            <Text style={{color: '#333333'}}>Correct</Text>
+            <Text style={{color: color.darkBlue}}>Correct</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.mainBtn} onPress={() => this.goToNextQuestion(restQuestions, score, totalNumber)}>
-            <Text style={{color: '#333333'}}>Incorrect</Text>
+            <Text style={{color: color.darkBlue}}>Incorrect</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderRadius: 4,
     paddingVertical: 12,
-    backgroundColor: '#333333',
+    backgroundColor: color.orange,
     alignItems: 'center',
   },
   secondaryButton: {
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     paddingVertical: 11,
     borderWidth: 1,
-    borderColor: '#333333',
+    borderColor: color.offBlue,
     alignItems: 'center',
   },
   flipCard: {
@@ -128,27 +128,27 @@ const styles = StyleSheet.create({
     height: 250,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#333333',
+    backgroundColor: color.darkGrey,
     backfaceVisibility: 'hidden',
     borderRadius: 5,
     padding: 20,
     shadowOffset: { width: 0, height: 5 },
-    shadowColor: '#333333',
+    shadowColor: color.darkGrey,
     shadowOpacity: 0.8,
     shadowRadius: 5,
   },
   flipCardBack: {
     padding: 20,
-    backgroundColor: '#f7f7f7',
+    backgroundColor: color.grey,
     position: 'absolute',
     top: 0,
   },
   flipText: {
     fontSize: 30,
-    color: '#f7f7f7',
+    color: color.grey,
   },
   flipTextBack: {
     fontSize: 24,
-    color: '#333333',
+    color: color.darkGrey,
   },
 });
