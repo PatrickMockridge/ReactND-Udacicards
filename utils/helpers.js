@@ -11,7 +11,7 @@ export const clearLocalNotification = () => {
 const createNotification = () => {
   return {
     title: 'Record your score',
-    body: "Rememeber yo record your score for today",
+    body: "Remember to record your score for today",
     ios: {
       sound: true,
     },

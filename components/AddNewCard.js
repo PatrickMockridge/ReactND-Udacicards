@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, AsyncStorage } from 'react-native';
+import { View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  AsyncStorage,
+  StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { addNewQuestion } from '../actions';
 import { NavigationActions } from 'react-navigation';
-import { color } from '../style/constants'
+import { color } from '../styles/constants'
 
 class AddNewCard extends Component {
   static navigationOptions = {
-    headerTintColor: color.white,
+    headerTintColor: color.darkGrey,
     headerStyle: {
 
     },
@@ -22,16 +27,16 @@ class AddNewCard extends Component {
   async _addNewQuestion() {
     const { deckName } = this.props.navigation.state.params;
     const { question, answer } = this.state;
-    // Update Redux
+    // Update Redux Store
     this.props.dispatch(addNewQuestion(deckName, question, answer));
-    // Save to DB
-    const res = await AsyncStorage.getItem('allDecks');
-    const allDecks = await JSON.parse(res);
+    // Save to AsyncStorage
+    const res = await AsyncStorage.getItem('decks');
+    const decks = await JSON.parse(res);
     const updatedDecks = {
-      ...allDecks,
-      [deckName]: [...allDecks[deckName], { question, answer }],
+      ...decks,
+      [deckName]: [...decks[deckName], { question, answer }],
     };
-    await AsyncStorage.setItem('allDecks', JSON.stringify(updatedDecks));
+    await AsyncStorage.setItem('decks', JSON.stringify(updatedDecks));
     this.setState({ question: '', answer: '' });
     // Navigate to Home
     this.props.navigation.navigate('DeckList');
@@ -39,24 +44,23 @@ class AddNewCard extends Component {
   render() {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text style={styles.labelText}>
-          Question
+        <Text style={styles.label}>
+          Enter question below
         </Text>
         <TextInput
-          style={styles.textInput}
+          style={styles.input}
           onChangeText={(question) => this.setState({question})}
           value={this.state.question}
         />
-        <Text style={[styles.labelText, { marginTop: 10 }]}>
-          Answer
+        <Text style={[styles.label, { marginTop: 10 }]}>
+          Enter answer below
         </Text>
         <TextInput
-          style={[styles.textInput]}
+          style={[styles.input]}
           onChangeText={(answer) => this.setState({answer})}
           value={this.state.answer}
         />
-        <TouchableOpacity
-          style={[styles.mainButton, { marginTop: 100 }]}
+        <TouchableOpacity style={[styles.primaryButton, { marginTop: 100 }]}
           onPress={() => {this._addNewQuestion()}}>
           <Text style={{color: color.grey}}>OK</Text>
         </TouchableOpacity>
@@ -66,22 +70,22 @@ class AddNewCard extends Component {
 }
 
 const styles = StyleSheet.create({
-  mainButton: {
-    borderRadius: 3,
-    paddingVertical: 15,
+  primaryButton: {
+    borderRadius: 4,
+    paddingVertical: 12,
     paddingHorizontal: 40,
     backgroundColor: color.darkGrey,
   },
-  textInput: {
-    height: 30,
-    width: 300,
-    borderColor: color.darkBlue,
-    borderWidth: 2,
-    borderRadius: 2,
+  input: {
+    height: 40,
+    width: 280,
+    borderColor: color.darkGrey,
+    borderWidth: 1,
+    borderRadius: 3,
   },
-  labelText: {
-    fontSize: 24,
-    fontWeight: '600',
+  label: {
+    fontSize: 26,
+    fontWeight: '700',
   },
 });
 

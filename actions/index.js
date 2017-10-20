@@ -2,28 +2,28 @@ export const TAKE_DECKS = 'TAKE_DECKS';
 export const ADD_NEW_DECK = 'ADD_NEW_DECK';
 export const ADD_NEW_QUESTION = 'ADD_NEW_QUESTION';
 
-export const takeDecks = (allDecks) => {
+export function takeDecks(decks) {
   return {
     type: TAKE_DECKS,
-    data: {
-      allDecks,
+    payload: {
+      decks,
     },
   };
 }
 
-export const addNewDeck = (deckName) => {
+export function addNewDeck(deck) {
   return {
     type: ADD_NEW_DECK,
-    data: {
-      deckName,
+    payload: {
+      deck,
     },
   };
 }
 
-export const addNewQuestion = (deckName, question, answer) => {
+export function addNewQuestion(deckName, question, answer) {
   return {
     type: ADD_NEW_QUESTION,
-    data: {
+    payload: {
       deckName,
       question,
       answer,

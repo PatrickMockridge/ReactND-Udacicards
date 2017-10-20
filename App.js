@@ -3,9 +3,10 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Constants } from 'expo';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './reducers';
 import { setLocalNotification } from './utils/helpers';
-import MainNavigator from './navigation/MainNavigator'
+import MainNavigator from './navigation'
+import reducer from './reducers';
+
 
 export default class App extends Component {
   componentDidMount() {

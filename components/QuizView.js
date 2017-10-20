@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Animated, TouchableWithoutFeedback } from 'react-native';
-import { color } from '../style/constants'
+import { View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Animated,
+  TouchableWithoutFeedback } from 'react-native';
+import { color } from '../styles/constants'
 
 export default class QuizView extends Component {
   static navigationOptions = {
-    headerTintColor: color.orange,
+    headerTintColor: color.darkGrey,
   };
   componentWillMount() {
     this.animatedValue = new Animated.Value(0);
@@ -25,14 +30,14 @@ export default class QuizView extends Component {
     if (this.value >= 90) {
       Animated.spring(this.animatedValue, {
         toValue: 0,
-        friction: 8,
-        tension: 10,
+        friction: 10,
+        tension: 8,
       }).start();
     } else {
       Animated.spring(this.animatedValue, {
         toValue: 180,
-        friction: 8,
-        tension: 10,
+        friction: 10,
+        tension: 8,
       }).start();
     }
   }
@@ -58,12 +63,12 @@ export default class QuizView extends Component {
     };
     return (
       <View style={{flex: 1}}>
-        <View style={styles.headerContainer}>
-          <Text style={{fontSize: 16}}>
+        <View style={styles.header}>
+          <Text style={{fontSize: 20}}>
             {totalNumber - restQuestions.length}/{totalNumber}
           </Text>
         </View>
-        <View style={styles.cardContainer}>
+        <View style={styles.card}>
           <Animated.View style={[styles.flipCard, frontAnimatedStyle]}>
             <Text style={styles.flipText}>
               {currentQuestion.question}
@@ -75,15 +80,15 @@ export default class QuizView extends Component {
             </Text>
           </Animated.View>
           <TouchableOpacity style={styles.secondaryButton} onPress={() => this.flipCard()}>
-            <Text style={{color: color.darkBlue}}>View Answer</Text>
+            <Text style={{color: color.darkGrey}}>View Answer</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.formContainer}>
-          <TouchableOpacity style={styles.mainButton} onPress={() => this.goToNextQuestion(restQuestions, score + 1, totalNumber)}>
-            <Text style={{color: color.darkBlue}}>Correct</Text>
+          <TouchableOpacity style={styles.primaryButton} onPress={() => this.goToNextQuestion(restQuestions, score + 1, totalNumber)}>
+            <Text style={{color: color.grey}}>Correct</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.mainBtn} onPress={() => this.goToNextQuestion(restQuestions, score, totalNumber)}>
-            <Text style={{color: color.darkBlue}}>Incorrect</Text>
+          <TouchableOpacity style={styles.primaryButton} onPress={() => this.goToNextQuestion(restQuestions, score, totalNumber)}>
+            <Text style={{color: color.grey}}>Incorrect</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -92,12 +97,12 @@ export default class QuizView extends Component {
 }
 
 const styles = StyleSheet.create({
-  headerContainer: {
+  header: {
     flex: 1,
     paddingTop: 10,
     paddingLeft: 10,
   },
-  cardContainer: {
+  card: {
     flex: 4,
     alignItems: 'center',
   },
@@ -106,7 +111,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  mainButton: {
+  primaryButton: {
     width: 155,
     marginTop: 10,
     borderRadius: 4,
@@ -139,16 +144,16 @@ const styles = StyleSheet.create({
   },
   flipCardBack: {
     padding: 20,
-    backgroundColor: color.grey,
+    backgroundColor: color.offBlue,
     position: 'absolute',
     top: 0,
   },
   flipText: {
     fontSize: 30,
-    color: color.grey,
+    color: color.orange,
   },
   flipTextBack: {
     fontSize: 24,
-    color: color.darkGrey,
+    color: color.grey,
   },
 });

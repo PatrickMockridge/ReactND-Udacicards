@@ -2,6 +2,8 @@
 
 A react native flash card quiz application built for and tested on iOS.
 
+Create a new deck of cards and then add cards to your quiz.
+
 Make sure that you have Yarn and Expo installed to run the application.
 
 https://yarnpkg.com/lang/en/

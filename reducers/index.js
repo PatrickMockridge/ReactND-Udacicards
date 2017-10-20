@@ -1,28 +1,26 @@
 import { TAKE_DECKS, ADD_NEW_DECK, ADD_NEW_QUESTION } from '../actions';
 
-const reducer = (state = {}, action) => {
+export default function decks(state = {}, action) {
   switch (action.type) {
     case TAKE_DECKS:
       return {
         ...state,
-        ...action.data.allDecks,
+        ...action.payload.decks,
       };
     case ADD_NEW_DECK:
       return {
         ...state,
-        ...action.data.deck,
+        ...action.payload.deck,
       };
     case ADD_NEW_QUESTION:
       return {
         ...state,
-        [action.data.deckName]: [...state[action.payload.deckName], {
-          question: action.data.question,
-          answer: action.data.answer,
+        [action.payload.deckName]: [...state[action.payload.deckName], {
+          question: action.payload.question,
+          answer: action.payload.answer,
         }],
       };
     default:
       return state;
   }
 }
-
-export default reducer

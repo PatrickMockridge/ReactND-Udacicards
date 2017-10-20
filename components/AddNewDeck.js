@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, AsyncStorage, TextInput } from 'react-native';
+import { View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  AsyncStorage,
+  TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import { addNewDeck } from '../actions';
 import { NavigationActions } from 'react-navigation';
-import { color } from '../style/constants'
+import { color } from '../styles/constants'
 
 class AddNewDeck extends Component {
   state = {
-    deckName: '',
+    text: '',
   }
   async _addNewDeck() {
     // Update Redux
     this.props.dispatch(addNewDeck({
-      [this.state.deckName]: [],
+      [this.state.text]: [],
     }));
-    // Save to DB
-    const res = await AsyncStorage.getItem('allDecks');
-    const allDecks = await JSON.parse(res);
-    const updatedAllDecks = {
-      ...allDecks,
-      [this.state.deckName]: [],
+    // Save to AsyncStorage
+    const res = await AsyncStorage.getItem('decks');
+    const decks = await JSON.parse(res);
+    const updatedDecks = {
+      ...decks,
+      [this.state.text]: [],
     };
-    await AsyncStorage.setItem('allDecks', JSON.stringify(updatedAllDecks));
-    this.setState({deckName: ''});
+    await AsyncStorage.setItem('decks', JSON.stringify(updatedDecks));
+    this.setState({text: ''});
     // Navigate to Home
     this.props.navigation.navigate('DeckList');
   }
@@ -30,18 +35,18 @@ class AddNewDeck extends Component {
     return (
       <View style={{flex: 1}}>
         <View style={styles.header}>
-          <Text style={styles.title}>Enter Deck Title</Text>
+          <Text style={styles.title}>Enter a title for your new deck</Text>
         </View>
         <View style={styles.form}>
           <TextInput
             style={styles.input}
-            onChangeText={(deckName) => this.setState({deckName})}
-            value={this.state.deckName}
+            onChangeText={(text) => this.setState({text})}
+            value={this.state.text}
           />
           <TouchableOpacity
-            style={[styles.okButton, { marginTop: 20 }]}
+            style={[styles.primaryButton, { marginTop: 20 }]}
             onPress={() => this._addNewDeck()}>
-            <Text style={{color: color.darkBlue}}>OK</Text>
+            <Text style={{color: color.grey}}>Submit</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -49,7 +54,7 @@ class AddNewDeck extends Component {
   }
 }
 
-const styles = StyleSheet.create({
+styles = StyleSheet.create({
   header: {
     flex: 3,
     justifyContent: 'center',
@@ -61,23 +66,24 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    color: color.offBlue,
-    fontWeight: '400',
+    color: color.darkGrey,
+    fontWeight: '500',
     textAlign: 'center',
   },
   input: {
-    height: 30,
-    width: 300,
-    borderColor: color.darkBlue,
+    height: 40,
+    width: 280,
+    borderColor: color.darkGrey,
     borderWidth: 1,
-    borderRadius: 3,
-  },
-  okButton: {
     borderRadius: 4,
-    paddingVertical: 10,
-    paddingHorizontal: 50,
-    backgroundColor: color.orange,
+  },
+  primaryButton: {
+    borderRadius: 4,
+    paddingVertical: 12,
+    paddingHorizontal: 40,
+    backgroundColor: color.darkGrey,
   },
 });
+
 
 export default connect()(AddNewDeck);

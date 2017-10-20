@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, AsyncStorage } from 'react-native';
+import { View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  AsyncStorage,
+  StyleSheet } from 'react-native';
 import Card from './Card';
 import { connect } from 'react-redux';
 import { takeDecks } from '../actions';
@@ -9,21 +14,18 @@ class DeckList extends Component {
     super(props);
   }
   componentDidMount() {
-    this._updateDeckList();
+    this._updateList();
   }
-  async _updateDeckList() {
-    const res = await AsyncStorage.getItem('allDecks');
-    const allDecks = await JSON.parse(res) || {};
-    //if (allDecks === undefined) {
-      //await AsyncStorage.setItem('allDecks', JSON.stringify({}));
-    //}
-    this.props.dispatch(takeDecks(allDecks));
+  async _updateList() {
+    const res = await AsyncStorage.getItem('decks');
+    const decks = await JSON.parse(res) || {};
+    this.props.dispatch(takeDecks(decks));
   }
   render() {
-    const { allDecks } = this.props;
+    const { decks } = this.props;
     return (
       <ScrollView style={{flex: 1}}>
-        {Object.entries(allDecks).map(([key, value]) =>
+        {Object.entries(decks).map(([key, value]) =>
           <Card
             key={key}
             name={key}
@@ -36,8 +38,8 @@ class DeckList extends Component {
   }
 }
 
-function mapStateToProps(allDecks) {
-  return { allDecks };
+function mapStateToProps(decks) {
+  return { decks };
 }
 
 export default connect(mapStateToProps)(DeckList);
