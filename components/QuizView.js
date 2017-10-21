@@ -41,15 +41,15 @@ export default class QuizView extends Component {
       }).start();
     }
   }
-  goToNextQuestion(restQuestions, score, totalNumber, questions) {
+  goToNextQuestion(restQuestions, score, totalNumber, questions, name, imageSource) {
     if (restQuestions.length > 0) {
       this.props.navigation.navigate('QuizView', { questions: restQuestions, totalNumber, score });
     } else {
-      this.props.navigation.navigate('QuizCompleteView', { score, totalNumber, questions });
+      this.props.navigation.navigate('QuizCompleteView', { score, totalNumber, questions, name, imageSource });
     }
   }
   render() {
-    const { questions, totalNumber, score } = this.props.navigation.state.params;
+    const { questions, totalNumber, score, name, imageSource } = this.props.navigation.state.params;
     const [currentQuestion, ...restQuestions] = questions;
     console.log(questions)
     const frontAnimatedStyle = {
@@ -85,10 +85,10 @@ export default class QuizView extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.formContainer}>
-          <TouchableOpacity style={styles.primaryButton} onPress={() => this.goToNextQuestion(restQuestions, score + 1, totalNumber, questions)}>
+          <TouchableOpacity style={styles.primaryButton} onPress={() => this.goToNextQuestion(restQuestions, score + 1, totalNumber, questions, name, imageSource)}>
             <Text style={{color: color.grey}}>Correct</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.primaryButton} onPress={() => this.goToNextQuestion(restQuestions, score, totalNumber, questions)}>
+          <TouchableOpacity style={styles.primaryButton} onPress={() => this.goToNextQuestion(restQuestions, score, totalNumber, questions, name, imageSource)}>
             <Text style={{color: color.grey}}>Incorrect</Text>
           </TouchableOpacity>
         </View>

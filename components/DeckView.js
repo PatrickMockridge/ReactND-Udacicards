@@ -14,6 +14,7 @@ export default class DeckView extends Component {
   render() {
     const navigation = this.props.navigation;
     const { name, imageSource, questions } = this.props.navigation.state.params;
+    console.log(this.props.navigation.state.params)
     return (
       <View style={{flex: 1}}>
         <View style={styles.header}>
@@ -23,7 +24,8 @@ export default class DeckView extends Component {
         </View>
         <View style={styles.buttons}>
           {questions.length !== 0 &&
-            <TouchableOpacity style={styles.primaryButton} onPress={() => navigation.navigate('QuizView', { questions, totalNumber: questions.length, score: 0 })}>
+            <TouchableOpacity style={styles.primaryButton}
+              onPress={() => navigation.navigate('QuizView', { name, imageSource, questions, totalNumber: questions.length, score: 0 })}>
               <Text style={{color: color.white}}>Start Quiz</Text>
             </TouchableOpacity>
           }

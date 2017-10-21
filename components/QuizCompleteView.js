@@ -23,7 +23,7 @@ export default class QuizCompleteView extends Component {
   }
 
   render() {
-    const { score, totalNumber, questions } = this.props.navigation.state.params;
+    const { score, totalNumber, questions, name, imageSource } = this.props.navigation.state.params;
     const navigation = this.props.navigation;
     console.log(this.props.navigation)
     return (
@@ -55,8 +55,8 @@ export default class QuizCompleteView extends Component {
         <View style={[styles.buttonContainer, styles.container]}>
           <TouchableOpacity
             style={[styles.secondaryButton, { marginTop: 10 }]}
-            onPress={() => this.toHome()}>
-            <Text style={{color: color.white}}>Back to Home</Text>
+            onPress={() => navigation.navigate('DeckView', { name, imageSource, questions })}>
+            <Text style={{color: color.white}}>Back to Deck View</Text>
           </TouchableOpacity>
         </View>
         <View style={[styles.buttonContainer, styles.container]}>
