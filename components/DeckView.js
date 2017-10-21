@@ -13,18 +13,18 @@ export default class DeckView extends Component {
   };
   render() {
     const navigation = this.props.navigation;
-    const { name, imgSource, questions } = this.props.navigation.state.params;
+    const { name, imageSource, questions } = this.props.navigation.state.params;
     return (
       <View style={{flex: 1}}>
         <View style={styles.header}>
-          <Image source={imgSource} style={{width: 130, height: 130}} />
+          <Image source={imageSource} style={{width: 130, height: 130}} />
           <Text style={[styles.title, { marginTop: 10 }]}>{name}</Text>
           <Text style={{fontSize: 20, color: color.darkGrey}}>{`${questions.length} cards`}</Text>
         </View>
         <View style={styles.buttons}>
           {questions.length !== 0 &&
             <TouchableOpacity style={styles.primaryButton} onPress={() => navigation.navigate('QuizView', { questions, totalNumber: questions.length, score: 0 })}>
-              <Text style={{color: color.grey}}>Start Quiz</Text>
+              <Text style={{color: color.white}}>Start Quiz</Text>
             </TouchableOpacity>
           }
           <TouchableOpacity style={[styles.secondaryButton, { marginTop: 10 }]} onPress={() => navigation.navigate('AddCard', { deckName: name })}>

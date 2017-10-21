@@ -21,8 +21,11 @@ export default class QuizCompleteView extends Component {
       ]
     }));
   }
+
   render() {
-    const { score, totalNumber } = this.props.navigation.state.params;
+    const { score, totalNumber, questions } = this.props.navigation.state.params;
+    const navigation = this.props.navigation;
+    console.log(this.props.navigation)
     return (
       <View style={{flex: 1, alignItems: 'center'}}>
         <View style={[styles.headerContainer, styles.container]}>
@@ -41,7 +44,7 @@ export default class QuizCompleteView extends Component {
           </Text>
           <View style={{backgroundColor: color.darkGrey, borderRadius: 2, marginTop: 7}}>
             <Text style={{color:
-              color.darkGrey,
+              color.white,
               paddingVertical: 7,
               paddingHorizontal: 50,
               fontWeight: '600', fontSize: 20}}>
@@ -50,8 +53,17 @@ export default class QuizCompleteView extends Component {
           </View>
         </View>
         <View style={[styles.buttonContainer, styles.container]}>
-          <TouchableOpacity style={[styles.secondaryButton, { marginTop: 10 }]} onPress={() => this.toHome()}>
-            <Text style={{color: color.grey}}>Back to Home</Text>
+          <TouchableOpacity
+            style={[styles.secondaryButton, { marginTop: 10 }]}
+            onPress={() => this.toHome()}>
+            <Text style={{color: color.white}}>Back to Home</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={[styles.buttonContainer, styles.container]}>
+          <TouchableOpacity
+            style={[styles.secondaryButton, { marginTop: 10 }]}
+            onPress={() => navigation.navigate('QuizView', { questions, totalNumber: questions.length, score: 0 })}>
+            <Text style={{color: color.orange}}>Restart Quiz</Text>
           </TouchableOpacity>
         </View>
       </View>
